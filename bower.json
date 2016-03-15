@@ -1,0 +1,19 @@
+{
+  "name": "penguins",
+  "description": "",
+  "authors": [
+    "Hugo GENNARO <hugo.gennaro@gmail.com> (none yet)"
+  ],
+  "license": "ISC",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "phaser": "~2.4.6",
+    "normalize.css": "^3.0.3"
+  }
+}
