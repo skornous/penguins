@@ -1,4 +1,4 @@
-import Bullet from './bullet';
+    import Bullet from './bullet';
 
 export default class Enemy extends Phaser.Sprite {
 
@@ -9,7 +9,7 @@ export default class Enemy extends Phaser.Sprite {
 
         this.anchor.setTo(0.5);
         this.scale.setTo(0.8);
-        this.health = health;
+            this.health = health;
         this.maxHealth = health;
         this.game.physics.arcade.enable(this);
 

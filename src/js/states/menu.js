@@ -4,10 +4,10 @@ export default class Menu extends Phaser.State {
 
     create() {
 
-        this.music = this.game.add.audio('menuMusic');
+        //this.music = this.game.add.audio('menuMusic');
 
-        this.title = new Phaser.Text(this.game, this.game.world.centerX, this.game.world.centerY-200, 'Shoot\'Em Up', {
-            font: '36px Tahoma',
+        this.title = new Phaser.Text(this.game, this.game.world.centerX, this.game.world.centerY-200, 'Penguins', {
+            font: '36px Verdana',
             fill: 'white',
             align: 'center'
         });
@@ -30,16 +30,16 @@ export default class Menu extends Phaser.State {
             }
         });
 
-        this.btnOverSound = this.add.sound('menuOver');
-        this.btnOutSound = this.add.sound('menuOut');
-        this.btnDownSound = this.add.sound('menuDown');
+        //this.btnOverSound = this.add.sound('menuOver');
+        //this.btnOutSound = this.add.sound('menuOut');
+        //this.btnDownSound = this.add.sound('menuDown');
 
-        this.start.setOverSound(this.btnOverSound);
-        this.start.setOutSound(this.btnOutSound);
-        this.start.setDownSound(this.btnDownSound);
+        //this.start.setOverSound(this.btnOverSound);
+        //this.start.setOutSound(this.btnOutSound);
+        //this.start.setDownSound(this.btnDownSound);
 
         this.start.onInputUp.add(()=>{
-            this.music.stop();
+            //this.music.stop();
             this.state.start('Play');
 
         });
@@ -48,6 +48,6 @@ export default class Menu extends Phaser.State {
         this.menuPanel.add(this.title);
         this.menuPanel.add(this.start);
 
-        this.music.loopFull();
+        //this.music.loopFull();
     }
 }

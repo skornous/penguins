@@ -8,10 +8,12 @@ export default class Player extends Phaser.Sprite {
         this.game = game;
 
         this.anchor.setTo(0.5);
-        this.scale.setTo(0.8);
+        this.scale.setTo(0.1);
 
         this.health = health;
         this.maxHealth = health;
+
+        this.direction = "none";
 
         this.game.physics.arcade.enable(this);
 
@@ -21,12 +23,6 @@ export default class Player extends Phaser.Sprite {
             x: 0,
             y: 0
         };
-
-        this.bullets = this.game.add.group();
-        this.bullets.enableBody = true;
-        this.bulletSpeed = -500;
-
-        this.shotSound = this.game.add.sound('playerShot');
 
         this.game.input.onDown.add(() => {
             if (this.alive) {
@@ -38,7 +34,8 @@ export default class Player extends Phaser.Sprite {
 
         this.game.input.onUp.add(() => {
             if (this.alive) {
-                this.frame = 1;
+                this.frame = 4;
+                this.direction = 'none';
             }
         });
 
@@ -78,47 +75,37 @@ export default class Player extends Phaser.Sprite {
             if (diff > 3) {
                 if (left) {
                     this.frame = 0;
+                    this.direction = 'left';
                 } else if (right) {
-                    this.frame = 2;
+                    this.frame = 8;
+                    this.direction = 'right';
                 }
             } else {
                 if (this.game.time.elapsedMS >= 16) {
-                    this.frame = 1;
+                    this.frame = 4;
+                    this.direction = 'none';
                 }
             }
+            //this.game.farback.tilePosition.y += 3;
 
 
             this.lastPos.x = x;
             this.lastPos.y = y;
         }
+
     }
 
-    shoot() {
-
-        this.shotSound.play("",0,0.5);
-
-        let bullet = this.bullets.getFirstExists(false);
-
-        if (!bullet) {
-            bullet = new Bullet({
-                game: this.game,
-                x: this.x,
-                y: this.top,
-                health: 3,
-                asset: 'bullet',
-                tint: 0x04c112
-            });
-            this.bullets.add(bullet);
-        }
-        else {
-            bullet.reset(this.x, this.top, 3);
-        }
-
-        bullet.body.velocity.y = this.bulletSpeed;
-    }
 
     damage(amount) {
         super.damage(amount);
+    }
+
+    goingLeft() {
+        return this.direction === "left";
+    }
+
+    sideStepping() {
+        return this.direction !== "none";
     }
 
 }

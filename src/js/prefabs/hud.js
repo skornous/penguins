@@ -3,10 +3,10 @@ export default class Hud extends Phaser.Group {
         super(game);
         this.game = game;
         this.player = player;
-        this.bg = new Phaser.Image(this.game, 0, 0, 'hudBg');
+        //this.bg = new Phaser.Image(this.game, 0, 0, 'hudBg');
         this.width = 800;
         //this.height = 600;
-        this.healthbar = new Phaser.Sprite(this.game, 2, 2, 'healthbar');
+        this.healthbar = new Phaser.Sprite(this.game, 0, 0, 'healthbar');
         this.healthbar.scale.setTo(0.995, 11);
 
         this.score = 0;
@@ -18,7 +18,7 @@ export default class Hud extends Phaser.Group {
 
         });
 
-        this.add(this.bg);
+        //this.add(this.bg);
         this.add(this.healthbar);
         this.add(this.scoreText);
     }
