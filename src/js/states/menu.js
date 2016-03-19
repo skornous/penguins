@@ -4,8 +4,6 @@ export default class Menu extends Phaser.State {
 
     create() {
 
-        //this.music = this.game.add.audio('menuMusic');
-
         this.title = new Phaser.Text(this.game, this.game.world.centerX, this.game.world.centerY-200, 'Penguins', {
             font: '36px Verdana',
             fill: 'white',
@@ -13,7 +11,24 @@ export default class Menu extends Phaser.State {
         });
         this.title.anchor.setTo(0.5);
 
-        this.start = new TextButton({
+        this.easy = new TextButton({
+            game: this.game,
+            x: this.game.world.centerX,
+            y: this.game.world.centerY - 50,
+            asset: 'button',
+            overFrame: 2,
+            outFrame: 1,
+            downFrame: 0,
+            upFrame: 1,
+            label: 'Easy',
+            style: {
+                font: '16px Verdana',
+                fill: 'white',
+                align: 'center'
+            }
+        });
+
+        this.medium = new TextButton({
             game: this.game,
             x: this.game.world.centerX,
             y: this.game.world.centerY,
@@ -22,7 +37,7 @@ export default class Menu extends Phaser.State {
             outFrame: 1,
             downFrame: 0,
             upFrame: 1,
-            label: 'Start',
+            label: 'Normal',
             style: {
                 font: '16px Verdana',
                 fill: 'white',
@@ -30,24 +45,43 @@ export default class Menu extends Phaser.State {
             }
         });
 
-        //this.btnOverSound = this.add.sound('menuOver');
-        //this.btnOutSound = this.add.sound('menuOut');
-        //this.btnDownSound = this.add.sound('menuDown');
+        this.hard = new TextButton({
+            game: this.game,
+            x: this.game.world.centerX,
+            y: this.game.world.centerY + 50,
+            asset: 'button',
+            overFrame: 2,
+            outFrame: 1,
+            downFrame: 0,
+            upFrame: 1,
+            label: 'Hard',
+            style: {
+                font: '16px Verdana',
+                fill: 'white',
+                align: 'center'
+            }
+        });
 
-        //this.start.setOverSound(this.btnOverSound);
-        //this.start.setOutSound(this.btnOutSound);
-        //this.start.setDownSound(this.btnDownSound);
-
-        this.start.onInputUp.add(()=>{
-            //this.music.stop();
+        this.easy.onInputUp.add(()=>{
+            this.game.difficulty = 0;
             this.state.start('Play');
+        });
 
+        this.medium.onInputUp.add(()=>{
+            this.game.difficulty = 1;
+            this.state.start('Play');
+        });
+
+        this.hard.onInputUp.add(()=>{
+            this.game.difficulty = 2;
+            this.state.start('Play');
         });
 
         this.menuPanel = this.add.group();
         this.menuPanel.add(this.title);
-        this.menuPanel.add(this.start);
+        this.menuPanel.add(this.easy);
+        this.menuPanel.add(this.medium);
+        this.menuPanel.add(this.hard);
 
-        //this.music.loopFull();
     }
 }

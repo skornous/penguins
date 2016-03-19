@@ -5,7 +5,7 @@ export default class Over extends Phaser.State {
     create() {
 
         this.gameOverTitle = new Phaser.Text(this.game, this.game.world.centerX, this.game.world.centerY-200, 'Game over', {
-            font: '36px Tahoma',
+            font: '36px Verdana',
             fill: 'white',
             align: 'center'
         });
@@ -44,17 +44,6 @@ export default class Over extends Phaser.State {
                 align: 'center'
             }
         });
-
-        this.btnOverSound = this.add.sound('menuOver');
-        this.btnOutSound = this.add.sound('menuOut');
-        this.btnDownSound = this.add.sound('menuDown');
-
-        this.start.setOverSound(this.btnOverSound);
-        this.start.setOutSound(this.btnOutSound);
-        this.start.setDownSound(this.btnDownSound);
-        this.menu.setOverSound(this.btnOverSound);
-        this.menu.setOutSound(this.btnOutSound);
-        this.menu.setDownSound(this.btnDownSound);
 
         this.start.onInputDown.add(()=>{
             this.state.start('Play');

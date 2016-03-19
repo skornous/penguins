@@ -95,9 +95,12 @@ export default class Player extends Phaser.Sprite {
 
     }
 
-
     damage(amount) {
         super.damage(amount);
+    }
+
+    heal(amount) {
+        super.heal(amount);
     }
 
     goingLeft() {

@@ -5,12 +5,13 @@ export default class GameTreeEngine {
                 "and": ["rock", "fish"]
             },
             {
-                "or": [{
-                    "and": ["rock", "fish"],
-                    "and": ["rock", {
-                        "and": ["fish", "seal"]
-                    }]
-                }]
+                "or": [
+                    {"and": ["rock", "fish"]},
+                    {
+                        "and": ["rock", {"and": ["fish", "seal"]}
+                        ]
+                    }
+                ]
             },
             {
                 "and": ["rock", {
@@ -21,7 +22,7 @@ export default class GameTreeEngine {
     }
 
     getInitialMission() {
-        return this.getMission(0);
+        return this.getMission(1);
     }
 
     getOneMission() {
